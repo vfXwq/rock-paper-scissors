@@ -22,18 +22,26 @@ function playRound(humanChoice, computerChoice) {
     }
     else if (humanChoice === "rock" && computerChoice === "paper" || humanChoice === "paper" && computerChoice === "scissors" || humanChoice === "scissors" && computerChoice === "rock") {
         console.log("You lose! " + capitalizeFirstWord(computerChoice) + " beats " + humanChoice + "!");
-        computerScore = computerScore + 1;
+        computerScore++;
     }
     else {
         console.log("You win! " + capitalizeFirstWord(humanChoice) + " beats " + computerChoice + "!");
-        humanScore = humanScore + 1;
+        humanScore++;
     }
-    console.log("Your score is: " + humanScore + ".\n" + "The computer's score is: " + computerScore + ".");
+    console.log("Your score is " + humanScore + ".\n" + "The computer's score is " + computerScore + ".");
     console.log(" ");
 }
-
-
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+    if (humanScore > computerScore) {
+        console.log("Congratulations, you won with a score " + humanScore + " " + computerScore + "!")
+    }
+    else {
+        console.log("You lost with a score " + computerScore + " " + humanScore + "!")
+    }
+}
 let humanScore = 0;
 let computerScore = 0;
-
-playRound(getHumanChoice(), getComputerChoice());
+playGame();
